@@ -21,5 +21,8 @@ from assignment_management import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home)
+    path('',views.home),
+    path('login/',views.login),
+    path('teacherpage/',views.teacherpage,name="teacherpage"),
+    path('logout/',views.logout,name='logout')
 ]
