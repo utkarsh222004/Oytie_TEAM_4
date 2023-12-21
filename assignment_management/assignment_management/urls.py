@@ -24,5 +24,8 @@ urlpatterns = [
     path('',views.home),
     path('login/',views.login),
     path('teacherpage/',views.teacherpage,name="teacherpage"),
-    path('logout/',views.logout,name='logout')
+    path('logout/',views.logout,name='logout'),
+    path('assignment_response/<int:id>',views.assignment_response,name="assignment_response"),
+    path('assignment_creation/',views.assignment_creation,name="assignment_creation"),
+    path('add_assignment/',views.add_assignment,name="add_assignment")
 ]

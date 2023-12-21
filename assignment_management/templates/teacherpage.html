@@ -105,7 +105,7 @@
        
             
             <li>
-                <a href=""><div>{{x.1}}</div></a>
+                <a href="/assignment_response/{{x.0}}"><div>{{x.1}}</div></a>
                 <div class="date">{{x.2}}</div>
                 <div>{{x.3}}</div>
                 
@@ -117,7 +117,7 @@
       </ul>
       <br>
       <br>
-      <form >
+      <form action="{% url 'assignment_creation' %}" >
               
         <button style="background-color:#f44336;color:white" type="submit">Add Assignment</button>
        

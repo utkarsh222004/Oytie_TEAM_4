@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+      
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      
+      
+      .input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;  
+      }
+      
+      input[type=text] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      input[type=date] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      .label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+      }
+      
+      input[type=button], input[type=submit] {
+        background-color: #0d6efd;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+      
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+      }
+      
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+      }
+      
+      .row::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+        }
+      }
+</style>
+<body>
+
+<h2>Add Assignment</h2>
+
+<div class="container">
+  <form action="{% url 'add_assignment'%}">
+  <div class="row">
+    <div class="col-25">
+      <label for="name">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="fname" name="name" placeholder="" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="batch">Batch number</label>
+    </div>
+    <div class="col-75">
+        
+      <select id="batch" name="batch" required>
+        {%for value in batch %}
+        <option value={{value}}>{{value}}</option>
+        {%endfor%}
+        
+        
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="deadline">Deadline</label>
+    </div>
+    <div class="col-75">
+      <input type="date" id="deadline" name="deadline" placeholder="" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="questions">Questions : </label>
+    </div>
+    <div class="col-75">
+      <textarea id="questions" name="questions" placeholder="" required style="height:200px"></textarea>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
+  </form>
+</div>
+</body>
+</html>
