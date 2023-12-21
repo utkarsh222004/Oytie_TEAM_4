@@ -3,6 +3,8 @@ from django.shortcuts import render,redirect
 from service.models import Teacher
 from service.models import Assignment
 from service.models import Batch
+from service.models import Student
+from service.models import Solution
  
 def home(request):
     return HttpResponse("Hello World!!")
@@ -30,7 +32,7 @@ def teacherpage(request):
             print(data)
             return render(request,"teacherpage.html",data)
 
-    if request.GET.get('myIdentity')=="teacher":
+    elif request.GET.get('myIdentity')=="teacher":
         userdata=Teacher.objects.filter(username=request.GET['username'] ,password=request.GET['password'])
         if(userdata):
             for data in userdata:
@@ -51,6 +53,8 @@ def teacherpage(request):
             data['assignment']=main_list
             print(data)
             return render(request,"teacherpage.html",data)
+    else:
+        return render(request,"login.html")
         
  
 def assignment_creation(request):
@@ -83,8 +87,6 @@ def add_assignment(request):
     return redirect(url)
        
     
-
-
 
 def assignment_response(request,id):
     return render(request,'login.html')
