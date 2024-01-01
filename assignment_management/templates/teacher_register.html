@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+      }
+      
+      html {
+        background: url("https://media.istockphoto.com/id/1145207599/photo/blurry-of-library-in-college-at-thailand.jpg?s=612x612&w=0&k=20&c=J6FSMBpurySZePSrN19r7LTeiza0yFBhX2AdBdRRmk0=") fixed center;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .container {
+        position: relative;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        max-width: 700px;
+        width: 100%;
+        background:white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        animation: borderAnimation 3s infinite alternate; /* Border animation */
+      }
+      
+      @keyframes borderAnimation {
+        from {
+          border-width: 5px;
+        }
+        to {
+          border-width: 10px;
+        }
+      }
+      
+      .container header {
+        font-size: 1.5rem;
+        color:blue;
+        font-weight: 500;
+        text-align: center;
+      }
+      
+      .container .form {
+        margin-top: 20px;
+      }
+      
+      .form .input-box {
+        width: 100%;
+        margin-top: 20px;
+      }
+      
+      .input-box label {
+        color: black;
+      }
+      
+      .form .input-box input {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: blue;
+        margin-top: 8px;
+        border: 1px solid darkgoldenrod;
+        border-radius: 6px;
+        padding: 0 15px;
+        transition: border-color 0.3s ease;
+      }
+      
+      .form .input-box input:focus {
+        border-color: #17a2b8; /* Highlight border color on focus */
+      }
+      
+      .form .column {
+        display: flex;
+        column-gap: 15px;
+      }
+      
+      .select-box select {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: black;
+        margin-top: 8px;
+        border: 1px solid darkgoldenrod;
+        border-radius: 6px;
+        padding: 0 15px;
+        transition: border-color 0.3s ease;
+      }
+      
+      .select-box select:focus {
+        border-color: #17a2b8; /* Highlight border color on focus */
+      }
+      
+      .form button {
+        height: 50px;
+        width: 25%;
+        color: black;
+        font-size: 1rem;
+        border: none;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 6px;
+        font-weight: 50;
+        transition: all 0.2s ease;
+        background-color:lightgreen;
+      }
+      
+      .form button:hover {
+        background-color:lightgren;
+      }
+      
+      
+      
+      
+      
+      /* Add this to your existing CSS code */
+      
+      .container {
+        /* ... Your existing styles ... */
+        border: 3px solid #3498db; /* Set initial border color */
+      }
+      
+      @keyframes borderAnimation {
+        from {
+          border-width: 3px;
+          border-color: #3498db; /* Initial border color */
+        }
+        to {
+          border-width: 3px;
+          border-color:#3498db ; /* Final border color */
+        }
+      }
+      
+      
+      
+      
+      .form button {
+        /* ... Your existing styles ... */
+        background-color: #2ecc71; /* Change button color */
+      }
+      
+      .form button:hover {
+        background-color: #27ae60; /* Change button color on hover */
+      }
+ </style>
+  <title>Teacher Sign Up</title>
+<script src="./signupteacher.js"></script>
+
+</head>
+<body>
+    <section class="container">
+        <header> <h1>Teacher Registration Form </h1></header>
+        <form action="{% url 'register' %}" class="form">
+            <div class="input-box">
+                <input type="text" name="identity" value="teacher" hidden>
+                <label>Enter Name</label>
+                <input type="text" name="name" placeholder="Enter Your Name" required/>
+            </div>
+            <div class="input-box">
+                <label>Enter Username</label>
+                <input type="text" name="uname" placeholder="Enter Your Username" required/>
+            </div>
+           
+                
+                <div class="input-box">
+                    <label>Enter MailID</label>
+                    <input type="text" name="email"placeholder="Enter the MailID" required/>
+                </div>
+            
+            <div class="column">
+                <div class="input-box">
+                    <label>Enter Address</label>
+                    <input type="text" name="address" placeholder="Enter Your Address" required/>
+                </div>
+                <div class="input-box">
+                    <label>Enter Phone NO</label>
+                    <input type="text" name="phone" placeholder="Enter Your Phone NO" required/>
+                </div>
+            </div>
+      
+            {% comment %} <div class="select-box">
+                <label>Select subject</label>
+              
+
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected>Select a subject</option>
+                    <option value="WT">WT</option>
+                    <option value="AI">AI</option>
+                    <option value="DBMS">DBMS</option>
+                    <option value="CN">CN</option>
+                    <option value="HCI">HCI</option>
+                    <!-- Add more subjects as needed -->
+                  </select>
+            </div> {% endcomment %}
+
+            <div class="input-box">
+                <label class="label" for="password">Password</label>
+                <input class="input" type="password" id="password" name="password" placeholder="Enter Password" required>
+              </div>
+          
+              <div class="input-box">
+                <label class="label" for="confirmPassword">Confirm Password:</label>
+                <input class="input" type="password" id="confirmPassword" name="confirmPassword"  placeholder="Reenter the Password" required>
+              </div>
+        
+              <button  type="submit"><h1>Register</h1></button>            
+        
+        </form>
+    </section>
+</body>
+</html>

@@ -13,6 +13,71 @@ def home(request):
 def login(request):
     return render(request,"login.html")
 
+def studentregister(request):
+    data={}
+    batchdata=[]
+    batch=Batch.objects.all()
+    for x in batch:
+        batchdata.append(x.batch_name)
+
+    data['batch']=batchdata
+    return render(request,"student_register.html",data)
+def teacherregister(request):
+    return render(request,"teacher_register.html")
+
+def register(request):
+    if request.GET.get('identity')=="student":
+        name=request.GET.get('name')
+        uname=request.GET.get('uname')
+        email=request.GET.get('email')
+        address=request.GET.get('address')
+        password=request.GET.get('password')
+        phone=request.GET.get('phone')
+
+        batchdata=Batch.objects.filter(batch_name=request.GET.get("batch"))
+        for x in batchdata:
+            batch=x.id
+        res=Student(name=name,batch_id=batch,username=uname,email=email,address=address,password=password,phone=phone)
+        res.save()
+
+        userdata=Student.objects.filter(username=request.GET['uname'] ,password=request.GET['password'])
+        if(userdata):
+            for data in userdata:
+                student_id=data.id
+        request.session['student_id']=student_id
+        
+        url='/studentpage/'
+        return redirect(url)
+        
+
+    if request.GET.get('identity')=="teacher":
+        name=request.GET.get('name')
+        uname=request.GET.get('uname')
+        email=request.GET.get('email')
+        address=request.GET.get('address')
+        password=request.GET.get('password')
+        phone=request.GET.get('phone')
+
+        
+        res=Teacher(name=name,username=uname,email=email,address=address,password=password,phone=phone)
+        res.save()
+
+        userdata=Teacher.objects.filter(username=request.GET['uname'] ,password=request.GET['password'])
+        if(userdata):
+            for data in userdata:
+                teacher_id=data.id
+        request.session['teacher_id']=teacher_id
+        
+        url='/teacherpage/'
+        return redirect(url)
+        
+
+
+
+        
+
+   
+
 def loginmap(request):
     if 'teacher_id' in request.session:
             userdata=Teacher.objects.filter(id=request.session['teacher_id'])
@@ -138,7 +203,6 @@ def assignment_creation(request):
     data={"teacher_id":request.session['teacher_id']}
     batchdata=[]
     batch=Batch.objects.all()
-    print(batch)
     for x in batch:
         batchdata.append(x.batch_name)
 
