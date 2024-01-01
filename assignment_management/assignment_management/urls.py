@@ -32,7 +32,9 @@ urlpatterns = [
     path('logout/',views.logout,name='logout'),
     path('assignment_response/<int:id>',views.assignment_response,name="assignment_response"),
     path('edit_assign/<int:id>',views.edit_assign,name="edit_assign"),
+    path('check/<int:assign>/<int:id>',views.check,name="check"),
     path('submit_solution/',views.submit_solution,name="submit_solution"),
+    path('assign_marks/',views.assign_marks,name='assign_marks'),
     path('assignment_creation/',views.assignment_creation,name="assignment_creation"),
     path('add_assignment/',views.add_assignment,name="add_assignment")
 ]

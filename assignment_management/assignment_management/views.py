@@ -230,7 +230,43 @@ def add_assignment(request):
     
 
 def assignment_response(request,id):
-    return render(request,'login.html')
+    main_list=[]
+    assignset=Assignment.objects.filter(id=id)
+    for assign in assignset:
+        data={"id":assign.id,"name":assign.name,"deadline":assign.deadline,"que":assign.questions}
+    result=Solution.objects.filter(assign_id=id)
+    for res in result:
+        stud_id=res.stud_id
+        print(stud_id.id)
+        stud_detail=Student.objects.filter(id=stud_id.id)
+        for s in stud_detail:
+            stud_name=s.name
+        list=[stud_id.id,stud_name,res.solution,res.submission_date]
+        main_list.append(list)
+    data.update({"details":main_list})
+    return render(request,'assignment_response.html',data)
+
+def check(request,id,assign):
+    result=Solution.objects.filter(assign_id=assign,stud_id=id)
+    stud=Student.objects.filter(id=id)
+    for s in stud:
+        stud_name=s.name
+    assignment=Assignment.objects.filter(id=assign)
+    for a in assignment:
+        assign_name=a.name
+    for res in result:
+        points=res.points
+        comment=res.comment
+        sol=res.solution
+    data={"stud_id":id,"assign_id":assign,"stud_name":stud_name,"assign_name":assign_name,"points":points,"comment":comment,"sol":sol}
+    print(data)
+    return render(request,'testing.html',data)
+
+def assign_marks(request):
+    res=Solution.objects.filter(stud_id=request.GET.get("stud"),assign_id=request.GET.get("assign")).update(points=request.GET.get("points"),comment=request.GET.get("comment"))
+  
+    url='/assignment_response/'+request.GET.get("assign")
+    return redirect(url)
 
 def edit_assign(request,id):
     assignset=Assignment.objects.filter(id=id)
