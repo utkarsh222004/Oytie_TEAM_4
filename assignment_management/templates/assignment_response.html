@@ -1,127 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    
 
-<style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Assignment Status</title>
+
+
+  <style>
     * {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-      }
-      
-      html,
-      main {
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
-      .btn{
-        color:red;
-      }
-      
-      nav {
-        background-color: black;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-      }
-      
-      #nav--right {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-      
-      .container {
-        width: 80%;
-        margin: 50px auto;
-        text-align: left;
-      }
-      
-      h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-      
-      h2 {
-        font-size: 18px;
-        margin-bottom: 10px;
-      }
-      
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      
-      li {
-        border-bottom: 1px solid #ddd;
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
-        padding-right: 50%;
-      }
-      
-      button {
-        padding: 6px 4px;
-      }
-      
-      .date {
-        color: red;
-      }
-      
-</style>
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
 
-  </head>
+    html,
+    main {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
 
-  <body>
-    <nav>
-      <h1>Assignment Management System</h1>
-      <div id="nav--right">
-        <form action="{%url 'logout'%}">
-              
-        <button type="submit">logout</button>
-       
-        </form>
-      </div>
-    </nav>
-    <div class="container">
-      <h1>Assignment: {{name}}</h1>
-      <h1>Deadline: {{deadline}}</h1>
-      <h1>Question: {{que}}</h1>
-      
-      <ul>
-        <li>
-          <div>Solution</div>
-          <div>Submission Date</div>
-          <div>Student</div>
-        </li>
-        {% for x in details%}
-       
-       
-            
-            <li>
-                <a href="/check/{{id}}/{{x.0}}"><div>{{x.2}}</div></a>
-                <div class="date">{{x.3}}</div>
-                <div>{{x.1}}</div>
-                
-              </li>
-      
-        
-        {% endfor %}
-        
-      </ul>
-      <br>
-      <br>
-      
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      background-color: #0d6efd;
+      color: #f8f9fa;
+      width: 100%;
+      height: 6vh;
+      border-radius: 0 0 5px 5px;
+    }
+
+    #nav--right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #header {
+      margin-left: 10px;
+      margin-right: 10px;
+      list-style: none;
+      margin-top: 7px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      text-align: center;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 50%;
+    }
+
+    #logout {
+      display: flex;
+      color: #f8f9fa;
+      padding: 5px;
+      background-color: transparent;
+      border: none;
+      font-size: 17px;
+      cursor: pointer;
+      margin-right: 18px;
+    }
+
+    #logout i {
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    .date {
+      color: red;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav>
+    <h1 id="header">Assignment Management System</h1>
+    <div id="nav--right">
+      <form action="{%url 'logout'%}">
+
+        <li><button id="logout"><i class="fa fa-power-off"></i>Logout</button></li>
+
+
+      </form>
     </div>
+  </nav>
+  <div class="container">
+    <h1>Assignment: {{name}}</h1>
+    <h1>Deadline: {{deadline}}</h1>
+    <h1>Question: {{que}}</h1>
 
-    
-  </body>
+    <ul>
+      <li>
+        <div>Solution</div>
+        <div>Submission Date</div>
+        <div>Student</div>
+      </li>
+      {% for x in details%}
+
+
+
+      <li>
+        <a href="/check/{{id}}/{{x.0}}">
+          <div>{{x.2}}</div>
+        </a>
+        <div class="date">{{x.3}}</div>
+        <div>{{x.1}}</div>
+
+      </li>
+
+
+      {% endfor %}
+
+    </ul>
+    <br>
+    <br>
+
+  </div>
+
+
+</body>
+
 </html>
