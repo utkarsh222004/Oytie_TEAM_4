@@ -95,7 +95,7 @@ def loginmap(request):
                    
             data={"teacher_name":teacher_name}
             data['assignment']=main_list
-            print(data)
+          
             return render(request,"teacherpage.html",data)
     if 'student_id' in request.session:
         userdata=Student.objects.filter(id=request.session['student_id'])
@@ -154,7 +154,7 @@ def loginmap(request):
                    
             data={"teacher_name":teacher_name}
             data['assignment']=main_list
-            print(data)
+           
             return render(request,"teacherpage.html",data)
 
     elif request.GET.get('myIdentity')=="student":
@@ -237,7 +237,7 @@ def assignment_response(request,id):
     result=Solution.objects.filter(assign_id=id)
     for res in result:
         stud_id=res.stud_id
-        print(stud_id.id)
+       
         stud_detail=Student.objects.filter(id=stud_id.id)
         for s in stud_detail:
             stud_name=s.name
@@ -259,7 +259,7 @@ def check(request,id,assign):
         comment=res.comment
         sol=res.solution
     data={"stud_id":id,"assign_id":assign,"stud_name":stud_name,"assign_name":assign_name,"points":points,"comment":comment,"sol":sol}
-    print(data)
+   
     return render(request,'testing.html',data)
 
 def assign_marks(request):
