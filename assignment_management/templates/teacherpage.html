@@ -20,11 +20,11 @@
         position: relative;
       }
       .btn{
-        color:red;
+        color:#0d6efd;
       }
       
       nav {
-        background-color: black;
+        background-color: #0d6efd;
         color: white;
         display: flex;
         align-items: center;
@@ -70,10 +70,12 @@
       
       button {
         padding: 6px 4px;
+        border-radius: 3%;
+        border: none;
       }
       
       .date {
-        color: red;
+        color: #0d6efd;
       }
       
 </style>
@@ -119,7 +121,7 @@
       <br>
       <form action="{% url 'assignment_creation' %}" >
               
-        <button style="background-color:#f44336;color:white" type="submit">Add Assignment</button>
+        <button style="background-color:#0d6efd;color:white" type="submit" class="add">Add Assignment</button>
        
         </form>
     </div>
