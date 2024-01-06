@@ -15,33 +15,16 @@
       font-family: "Poppins", sans-serif;
     }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-    }
-
-    html {
-      /* background: url("https://media.istockphoto.com/id/1145207599/photo/blurry-of-library-in-college-at-thailand.jpg?s=612x612&w=0&k=20&c=J6FSMBpurySZePSrN19r7LTeiza0yFBhX2AdBdRRmk0=") fixed center; */
-      background-size: cover;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
     .container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      margin-top: 25px;
-      margin-bottom: 25px;
-      max-width: 700px;
       width: 100%;
-      background: white;
       padding: 25px;
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       animation: borderAnimation 3s infinite alternate;
       /* Border animation */
     }
@@ -57,11 +40,18 @@
     }
 
     .container header {
-      font-size: 1.3rem;
+      position: absolute;
+      font-size: 1rem;
       color: #000;
+      margin-bottom: 100vh;
+      width: 100%;
       font-weight: 500;
-      margin-bottom: 30px;
       text-align: center;
+      padding: 20px;
+    }
+
+    .container h1 {
+      text-decoration: underline;
     }
 
     .container .form {
@@ -142,7 +132,22 @@
     }
 
 
+    .footer {
+      background: #0d6efd;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+      height: fit-content;
+      color: #fff;
+      margin-top: 30px;
+    }
 
+    .footer p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
     /* Add this to your existing CSS code */
 
@@ -248,6 +253,10 @@
 
     </form>
   </section>
+
+  <footer class="footer">
+    <p>&copy; OYTIE PRIVATE LIMITED, 2024</p>
+  </footer>
 </body>
 
 </html>
