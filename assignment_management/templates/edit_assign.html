@@ -1,5 +1,7 @@
-{% comment %} <!DOCTYPE html>
+{% comment %}
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Assignment Details</title>
     <style>
@@ -15,13 +17,13 @@
             height: 100vh;
             font-size: 20px;
         }
-        
+
         h2 {
             color: #333;
             text-align: center;
             margin-bottom: 5px;
         }
-        
+
         #assignmentDetails {
             background-color: #fff;
             padding: 20px;
@@ -31,9 +33,9 @@
             max-width: 1300px;
             width: 100%;
             box-sizing: border-box;
-            overflow-y:auto;
+            overflow-y: auto;
         }
-        
+
         #assignmentName {
             color: #3498db;
             font-size: 30px;
@@ -41,25 +43,25 @@
             margin-bottom: 5px;
             display: block;
         }
-        
+
         #questionsList {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
-        
+
         #questionsList li {
             color: #555;
             font-size: 20px;
             margin-bottom: 12px;
         }
-        
+
         #deadline {
             color: #555;
             font-size: 18px;
             margin-top: 20px;
         }
-        
+
         button {
             background-color: #3498db;
             color: #fff;
@@ -70,12 +72,30 @@
             transition: background-color 0.3s ease;
             font-size: 20px;
         }
-        
+
         button:hover {
             background-color: #2980b9;
         }
+
+        .footer {
+            background: #0d6efd;
+            width: 100%;
+            padding: 5px 0;
+            margin-top: 60px;
+            text-align: center;
+            height: fit-content;
+            color: #fff;
+        }
+
+        .footer p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <h2>Assignment Details</h2>
     <div id="assignmentDetails">
@@ -86,31 +106,26 @@
     </div>
     <a href="studentassignmentsubmission.html"><button>Add your Submission</button></a>
     <script>
-        function validateAndSubmit() 
-        {
+        function validateAndSubmit() {
             var assignmentName = document.getElementById('assignmentName').innerText;
-            if (assignmentName.trim() === '') 
-            {
+            if (assignmentName.trim() === '') {
                 document.getElementById('error-message').innerText = 'Assignment name cannot be empty.';
-            } 
-            else 
-            {
+            }
+            else {
                 document.getElementById('error-message').innerText = '';
                 submitAssignment();
             }
         }
-        
+
         fetch('your-backend-endpoint')  // Replace with the actual endpoint
             .then(response => response.json())
-            .then(data => {displayAssignmentDetails(data);})
-            .catch(error => {console.error('Error fetching assignment data:', error);});
+            .then(data => { displayAssignmentDetails(data); })
+            .catch(error => { console.error('Error fetching assignment data:', error); });
 
-        function displayAssignmentDetails(data) 
-        {
+        function displayAssignmentDetails(data) {
             document.getElementById('assignmentName').innerText = data.name;
             var questionsList = document.getElementById('questionsList');
-            data.questions.forEach(function(question) 
-            {
+            data.questions.forEach(function (question) {
                 var listItem = document.createElement('li');
                 listItem.textContent = question;
                 questionsList.appendChild(listItem);
@@ -119,57 +134,66 @@
         }
     </script>
 </body>
+
 </html> {% endcomment %}
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit a solution</title>
     <style>
-    .card {
-        width: 500px;
-        height: 600px;
-        border: 0.5px solid #eeeef1;
-        border-style: hidden;
-        border-radius: 5px;
-        overflow: hidden;
-        position: relative;
-        background-color:whitesmoke;
-      }
-      /* Style the content inside the card */
-      .card-content {
-        padding: 20px;
-        color: #090808db; /* Adjust text color based on your background image */
-        z-index: 1; /* Ensure content is above the background image */
-      }
-      body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh; /* Set the height to 100% of the viewport height */
-      margin: 0; /* Remove default body margin */
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        .card {
+            width: 500px;
+            height: 600px;
+            border: 0.5px solid #eeeef1;
+            border-style: hidden;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            background-color: whitesmoke;
+        }
 
-    button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-}
+        /* Style the content inside the card */
+        .card-content {
+            padding: 20px;
+            color: #090808db;
+            /* Adjust text color based on your background image */
+            z-index: 1;
+            /* Ensure content is above the background image */
+        }
 
-button:hover {
-  background-color: #0056b3;
-}
-.error {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Set the height to 100% of the viewport height */
+            margin: 0;
+            /* Remove default body margin */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
             color: red;
         }
     </style>
@@ -182,37 +206,44 @@ button:hover {
         <h2 align="center">Submit a solution</h2>
         <div class="card">
             <div class="card-content">
-              <!-- Your card content goes here -->
-            <form  id="myForm" method="get" action='{% url "submit_solution" %}'>
-                    
-
-                <div id="assignmentDetails">
-                    
-                    <h3>Assignment Name: <span id="assignmentName"> {{name}}</span></h3>
-                    <p>Deadline:    <span id="deadline">{{deadline}}</span></p>
-                    <p>Questions: </p>
-                    <ul id="questionsList">  {{que}}</ul>
-                </div>
+                <!-- Your card content goes here -->
+                <form id="myForm" method="get" action='{% url "submit_solution" %}'>
 
 
-                <br>
-                <div>  
-                       <label for="Description"></label>
-                       <strong>Solution :</strong><br><textarea name="solution" id="Description" cols="60" rows="15"></textarea>  
-                </div>
-                <!-- <h3>OR</h3>
+                    <div id="assignmentDetails">
+
+                        <h3>Assignment Name: <span id="assignmentName"> {{name}}</span></h3>
+                        <p>Deadline: <span id="deadline">{{deadline}}</span></p>
+                        <p>Questions: </p>
+                        <ul id="questionsList"> {{que}}</ul>
+                    </div>
+
+
+                    <br>
+                    <div>
+                        <label for="Description"></label>
+                        <strong>Solution :</strong><br><textarea name="solution" id="Description" cols="60"
+                            rows="15"></textarea>
+                    </div>
+                    <!-- <h3>OR</h3>
                 <div>
                     Upload your scanned handrwitten assignment: <input type="file">
                 </div> -->
-                <br>
-                <button type="submit">Submit</button> <br>
-                <input type=text name="assign_id" value={{id}}   hidden>
-            </form>
+                    <br>
+                    <button type="submit">Submit</button> <br>
+                    <input type=text name="assign_id" value={{id}} hidden>
+                </form>
             </div>
-          </div>
+        </div>
     </div>
+
+    <footer class="footer">
+        <p>&copy; OYTIE PRIVATE LIMITED, 2024</p>
+    </footer>
+
+
     <script>
-       function validateTitle() {
+        function validateTitle() {
             // Get the title input value
             var Title = document.getElementById('Title').value;
 
@@ -231,4 +262,5 @@ button:hover {
 
     </script>
 </body>
+
 </html>
