@@ -4,100 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Student assignment</title>
-<style>
-    body {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-    
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        background-color: #0d6efd;
-        width: 100%;
-        height: 6vh;
-        border-radius: 0 0 5px 5px;
-    }
-    
-    .navbar li {
-        margin-left: 10px;
-        margin-right: 10px;
-        list-style: none;
-        margin-top: 7px;
-        font-size: 20px;
-        font-weight: 500;
-    }
-    
-    .navbar li a {
-        text-decoration: none;
-        color: #f8f9fa;
-    
-    }
-    
-    #logout {
-        color: #f8f9fa;
-        padding: 5px;
-        background-color: transparent;
-        border: none;
-        font-size: 17px;
-        cursor: pointer;
-    }
-    
-    #logout i {
-        cursor: pointer;
-        margin-right: 5px;
-    }
-    
-    .header {
-        margin-left: 20%;
-        margin-top: 40px;
-    }
-    
-    .header button {
-        background-color:#0d6efd;
-        border: none;
-        color: #f8f9fa;
-        padding: 10px;
-        border-radius: 10px;
-    }
-    
-    .layout {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .tableLayout {
-        border-collapse: collapse;
-        width: 60%;
-        margin-top: 60px;
-    }
-    
-    
-    .tableLayout th,
-    td {
-        padding-top: 20px;
-    }
-    
-    .tableLayout th {
-        text-decoration: none;
-        border-bottom: 2px solid #000;
-    }
-    
-    .tableLayout td {
-        border-bottom: 1px solid #000;
-    
-    }
-    
-    .tableLayout tr:nth-child(even) {
-        background-color: #0d6dfd60;
-    }
-</style>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #0d6efd;
+            width: 100%;
+            height: 6vh;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .navbar li {
+            margin-left: 10px;
+            margin-right: 10px;
+            list-style: none;
+            margin-top: 7px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .navbar li a {
+            text-decoration: none;
+            color: #f8f9fa;
+
+        }
+
+        #logout {
+            color: #f8f9fa;
+            padding: 5px;
+            background-color: transparent;
+            border: none;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        #logout i {
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .header {
+            margin-left: 20%;
+            margin-top: 40px;
+        }
+
+        .header button {
+            background-color: #0d6efd;
+            border: none;
+            color: #f8f9fa;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .layout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .tableLayout {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 60px;
+        }
+
+
+        .tableLayout th,
+        td {
+            padding-top: 20px;
+        }
+
+        .tableLayout th {
+            text-decoration: none;
+            border-bottom: 2px solid #000;
+        }
+
+        .tableLayout td {
+            border-bottom: 1px solid #000;
+
+        }
+
+        .tableLayout tr:nth-child(even) {
+            background-color: #0d6dfd60;
+        }
+
+        .footer {
+            background: #0d6efd;
+            width: 100%;
+            padding: 5px 0;
+            margin-top: 42vh;
+            text-align: center;
+            height: fit-content;
+            color: #fff;
+        }
+
+        .footer p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -106,11 +124,11 @@
             <li><a href="">Assignment Submission System</a></li>
             <li><a href="">Assignments</a></li>
             <form action="{%url 'logout'%}">
-              
+
                 <li><button id="logout" type="submit"><i class="fa fa-power-off"></i>Logout</button></li>
-               
-                </form>
-           
+
+            </form>
+
         </nav>
 
         <div class="header">
@@ -130,7 +148,7 @@
                     </tr>
                     {% for x in assignment%}
                     {% if x.4 == '-' %}
-                    
+
                     <tr>
 
                         <td> <a href="/edit_assign/{{x.0}}">{{x.1}}</a></td>
@@ -145,7 +163,7 @@
 
                     {% for x in assignment%}
                     {% if x.4 == 'not checked yet' %}
-                    
+
                     <tr>
 
                         <td> {{x.1}}</td>
@@ -159,7 +177,7 @@
                     {% endfor %}
                     {% for x in assignment%}
                     {% if x.4 != 'not checked yet' and x.4 != '-'%}
-                    
+
                     <tr>
 
                         <td>{{x.1}}</td>
@@ -172,13 +190,17 @@
                     {% endif %}
                     {% endfor %}
 
-      
-        
-       
-                    
+
+
+
+
                 </tbody>
             </table>
         </div>
+
+        <footer class="footer">
+            <p>&copy; OYTIE PRIVATE LIMITED, 2024</p>
+        </footer>
     </div>
 </body>
 
