@@ -148,7 +148,7 @@
     <style>
         .card {
             width: 500px;
-            height: 600px;
+            height: 550px;
             border: 0.5px solid #eeeef1;
             border-style: hidden;
             border-radius: 5px;
@@ -159,7 +159,7 @@
 
         /* Style the content inside the card */
         .card-content {
-            padding: 20px;
+            padding: 10px;
             color: #090808db;
             /* Adjust text color based on your background image */
             z-index: 1;
@@ -167,10 +167,10 @@
         }
 
         body {
-            display: flex;
+            
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 50vh;
             /* Set the height to 100% of the viewport height */
             margin: 0;
             /* Remove default body margin */
@@ -196,15 +196,32 @@
         .error {
             color: red;
         }
+
+        .footer {
+            background: #0d6efd;
+            width: 100%;
+            padding: 5px 0;
+            margin-top: 30px;
+            text-align: center;
+            height: fit-content;
+            color: #fff;
+        }
+
+        .footer p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
     </style>
 
 
 </head>
 
 <body>
-    <div class="card-content">
+    <div class="card-content" align="center">
         <h2 align="center">Submit a solution</h2>
-        <div class="card">
+        <div class="card"  >
             <div class="card-content">
                 <!-- Your card content goes here -->
                 <form id="myForm" method="get" action='{% url "submit_solution" %}'>
